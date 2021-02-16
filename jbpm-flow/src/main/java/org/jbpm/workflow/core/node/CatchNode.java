@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Red Hat, Inc. and/or its affiliates.
+ * Copyright 2020 Red Hat, Inc. and/or its affiliates.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,14 @@
  * limitations under the License.
  */
 
-package org.jbpm.workflow.instance.node;
+package org.jbpm.workflow.core.node;
 
-import org.kie.api.runtime.process.NodeInstance;
-import org.jbpm.workflow.instance.impl.NodeInstanceImpl;
+import java.util.List;
 
-public class CatchLinkNodeInstance extends NodeInstanceImpl {
 
-	private static final long serialVersionUID = 20110505L;
+public interface CatchNode {
 
-	@Override
-	public void internalTrigger(NodeInstance from, String type) {
-		this.triggerCompleted();
+    List<DataAssociation> getOutDataAssociation();
 
-	}
-
-	public void triggerCompleted() {
-		this.triggerCompleted(org.jbpm.workflow.core.Node.CONNECTION_DEFAULT_TYPE, true);
-	}
-
+    void addOutDataAssociation(DataAssociation dataAssociation);
 }
