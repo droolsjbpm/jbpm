@@ -1,8 +1,7 @@
     create table Attachment (
         id bigint not null auto_increment,
         accessType integer,
-        attachedAt datetime,
-        -- attachedAt datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        attachedAt datetime(6),
         attachmentContentId bigint not null,
         contentType varchar(255),
         name varchar(255),
@@ -14,16 +13,13 @@
 
     create table AuditTaskImpl (
         id bigint not null auto_increment,
-        activationTime datetime,
-        -- activationTime datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        activationTime datetime(6),
         actualOwner varchar(255),
         createdBy varchar(255),
-        createdOn datetime,
-        -- createdOn datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        createdOn datetime(6),
         deploymentId varchar(255),
         description varchar(255),
-        dueDate datetime,
-        -- dueDate datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        dueDate datetime(6),
         name varchar(255),
         parentId bigint not null,
         priority integer not null,
@@ -33,20 +29,17 @@
         status varchar(255),
         taskId bigint,
         workItemId bigint,
-        lastModificationDate datetime,
+        lastModificationDate datetime(6),
         primary key (id)
     ) ENGINE=InnoDB;
 
     create table BAMTaskSummary (
         pk bigint not null auto_increment,
-        createdDate datetime,
-        -- createdDate datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        createdDate datetime(6),
         duration bigint,
-        endDate datetime,
-        -- endDate datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        endDate datetime(6),
         processInstanceId bigint not null,
-        startDate datetime,
-        -- startDate datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        startDate datetime(6),
         status varchar(255),
         taskId bigint not null,
         taskName varchar(255),
@@ -77,8 +70,7 @@
         itemName varchar(255),
         itemType varchar(255),
         itemValue varchar(255),
-        lastModified datetime,
-        -- lastModified datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        lastModified datetime(6),
         lastModifiedBy varchar(255),
         primary key (id)
     ) ENGINE=InnoDB;
@@ -127,8 +119,7 @@
 
     create table Deadline (
         id bigint not null auto_increment,
-        deadline_date datetime,
-        -- deadline_date datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        deadline_date datetime(6),
         escalated smallint,
         Deadlines_StartDeadLine_Id bigint,
         Deadlines_EndDeadLine_Id bigint,
@@ -146,8 +137,7 @@
         DEPLOYMENT_ID varchar(255),
         deploymentUnit longtext,
         state integer,
-        updateDate datetime,
-        -- updateDate datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        updateDate datetime(6),
         primary key (id)
     ) ENGINE=InnoDB;
 
@@ -155,8 +145,7 @@
         id bigint not null auto_increment,
         message varchar(255),
         stacktrace varchar(5000),
-        timestamp datetime,
-        -- timestamp datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        timestamp datetime(6),
         REQUEST_ID bigint not null,
         primary key (id)
     ) ENGINE=InnoDB;
@@ -176,15 +165,13 @@
     create table ExecutionErrorInfo (
         id bigint not null auto_increment,
         ERROR_ACK smallint,
-        ERROR_ACK_AT datetime,
-        -- ERROR_ACK_AT datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        ERROR_ACK_AT datetime(6),
         ERROR_ACK_BY varchar(255),
         ACTIVITY_ID bigint,
         ACTIVITY_NAME varchar(255),
         DEPLOYMENT_ID varchar(255),
         ERROR_INFO longtext,
-        ERROR_DATE datetime,
-        -- ERROR_DATE datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        ERROR_DATE datetime(6),
         ERROR_ID varchar(255),
         ERROR_MSG varchar(255),
         INIT_ACTIVITY_ID bigint,
@@ -215,8 +202,7 @@
     create table NodeInstanceLog (
         id bigint not null auto_increment,
         connection varchar(255),
-        log_date datetime,
-        -- log_date datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        log_date datetime(6),
         externalId varchar(255),
         nodeId varchar(255),
         nodeInstanceId varchar(255),
@@ -224,8 +210,7 @@
         nodeType varchar(255),
         processId varchar(255),
         processInstanceId bigint not null,
-        sla_due_date datetime,
-        -- sla_due_date datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        sla_due_date datetime(6),
         slaCompliance integer,
         type integer not null,
         workItemId bigint,
@@ -292,14 +277,11 @@
 
     create table ProcessInstanceInfo (
         InstanceId bigint not null auto_increment,
-        lastModificationDate datetime,
-        -- lastModificationDate datetime(6), to be used with mysql 5.6.4 that supports millis precision
-        lastReadDate datetime,
-        -- lastReadDate datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        lastModificationDate datetime(6),
+        lastReadDate datetime(6),
         processId varchar(255),
         processInstanceByteArray longblob,
-        startDate datetime,
-        -- startDate datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        startDate datetime(6),
         state integer not null,
         OPTLOCK integer,
         primary key (InstanceId)
@@ -309,8 +291,7 @@
         id bigint not null auto_increment,
         correlationKey varchar(255),
         duration bigint,
-        end_date datetime,
-        -- end_date datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        end_date datetime(6),
         externalId varchar(255),
         user_identity varchar(255),
         outcome varchar(255),
@@ -321,11 +302,9 @@
         processName varchar(255),
         processType integer,
         processVersion varchar(255),
-        sla_due_date datetime,
-        -- sla_due_date datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        sla_due_date datetime(6),
         slaCompliance integer,
-        start_date datetime,
-        -- start_date datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        start_date datetime(6),
         status integer,
         primary key (id)
     ) ENGINE=InnoDB;
@@ -364,18 +343,15 @@
         responseData longblob,
         retries integer not null,
         status varchar(255),
-        timestamp datetime,
-        -- timestamp datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        timestamp datetime(6),
         primary key (id)
     ) ENGINE=InnoDB;
 
     create table SessionInfo (
         id bigint not null auto_increment,
-        lastModificationDate datetime,
-        -- lastModificationDate datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        lastModificationDate datetime(6),
         rulesByteArray longblob,
-        startDate datetime,
-        -- startDate datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        startDate datetime(6),
         OPTLOCK integer,
         primary key (id)
     ) ENGINE=InnoDB;
@@ -390,16 +366,13 @@
         priority integer not null,
         subTaskStrategy varchar(255),
         subject varchar(255),
-        activationTime datetime,
-        -- activationTime datetime(6), to be used with mysql 5.6.4 that supports millis precision
-        createdOn datetime,
-        -- createdOn datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        activationTime datetime(6),
+        createdOn datetime(6),
         deploymentId varchar(255),
         documentAccessType integer,
         documentContentId bigint not null,
         documentType varchar(255),
-        expirationTime datetime,
-        -- expirationTime datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        expirationTime datetime(6),
         faultAccessType integer,
         faultContentId bigint not null,
         faultName varchar(255),
@@ -432,8 +405,7 @@
 
     create table TaskEvent (
         id bigint not null auto_increment,
-        logTime datetime,
-        -- logTime datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        logTime datetime(6),
         message varchar(255),
         processInstanceId bigint,
         taskId bigint,
@@ -448,8 +420,7 @@
 
     create table TaskVariableImpl (
         id bigint not null auto_increment,
-        modificationDate datetime,
-        -- modificationDate datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        modificationDate datetime(6),
         name varchar(255),
         processId varchar(255),
         processInstanceId bigint,
@@ -461,8 +432,7 @@
 
     create table VariableInstanceLog (
         id bigint not null auto_increment,
-        log_date datetime,
-        -- log_date datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        log_date datetime(6),
         externalId varchar(255),
         oldValue varchar(255),
         processId varchar(255),
@@ -475,8 +445,7 @@
 
     create table WorkItemInfo (
         workItemId bigint not null auto_increment,
-        creationDate datetime,
-        -- creationDate datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        creationDate datetime(6),
         name varchar(255),
         processInstanceId bigint not null,
         state bigint not null,
@@ -497,8 +466,7 @@
 
     create table task_comment (
         id bigint not null auto_increment,
-        addedAt datetime,
-        -- addedAt datetime(6), to be used with mysql 5.6.4 that supports millis precision
+        addedAt datetime(6),
         text longtext,
         addedBy_id varchar(255),
         TaskData_Comments_Id bigint,
