@@ -24,6 +24,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.jbpm.document.service.DocumentStorageServiceProvider;
+import org.jbpm.document.service.impl.DocumentImpl;
 import org.jbpm.kie.services.impl.admin.commands.UpdateTaskCommand;
 import org.jbpm.services.api.DeploymentService;
 import org.jbpm.services.api.RuntimeDataService;
@@ -1074,6 +1076,11 @@ public class UserTaskServiceImpl implements UserTaskService, VariablesAware {
 	            
 	            ContentMarshallerContext ctx = TaskContentRegistry.get().getMarshallerContext(task.getDeploymentId());
 	            Object unmarshall = ContentMarshallerHelper.unmarshall(contentById.getContent(), ctx.getEnvironment(), ctx.getClassloader());
+                if (unmarshall instanceof DocumentImpl) {
+                    DocumentImpl document = (DocumentImpl) unmarshall;
+                    document.setLoadService(DocumentStorageServiceProvider.get().getStorageService());
+                    return document.getContent();
+                }
 	            return unmarshall;
 	        }
 	        return null;
